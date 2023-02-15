@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lesson_4Activity">
+
+    <Button
+        android:id="@+id/btn_12"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="560dp"
+        android:backgroundTint="@color/cislotniy"
+        android:fontFamily="@font/montserrat_black"
+        android:onClick="onClick"
+        android:text="Отправить"
+        android:textColor="@color/grey"
+        app:cornerRadius="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_black"
+            android:text="Приветствую вас на четвертом уроке курса по изучению языка программирования Python.
+
+\nВ этом уроке мы пройдём с вами:
+
+\n1.Выражение в определениях
+\n2.Именование
+\n3.Интерполяция
+
+\nВыражение в определениях
+\nМы уже разобрались, как работать с переменными, чтобы хранить и переиспользовать информацию. Но еще они помогают упрощать сложные вычисления. Например, конвертация валюты или составление нового слова. Рассмотрим, как это делать на практике.
+
+\nСложные вычисления через переменную
+\nПредставим, что нам нужно перевести евро в рубли через доллары. Подобные конвертации через промежуточную валюту часто делают банки при покупках за рубежом.
+
+\nДля начала переведем 50 евро в доллары. Допустим, что один евро — 1.25 долларов:
+
+\ndollars_count = 50 * 1.25
+\nprint(dollars_count)  # => 62.5
+\nЗдесь в переменную dollars_count = 50 * 1.25 справа от знака «равно» мы записываем выражение. Интерпретатор вычислит результат (62.5) и запишет его в переменную. Интерпретатору не важно, в каком виде записаны данные: 62.5 или 50 * 1.25. Для него оба варианта — выражения, которые надо вычислить. Он проводит вычисления и приходит к одному и тому же значению — 62.5.
+
+\nЛюбая строка — выражение. Конкатенация строк (склеивание значений переменных) — это тоже выражение. Когда интерпретатор видит выражение, он обрабатывает его и генерирует результат — значение выражения.
+
+\nВот несколько примеров выражения. В комментариях справа от каждого выражения записаны итоговые значения:
+
+\n62.5             # 62.5
+\n50 * 1.25        # 62.5
+\n120 / 10 * 2     # 24.0
+\nint('100')       # 100
+
+\n'hello'          # hello
+\n'Good' + 'will'  # Goodwill
+\nВ тех местах, где ожидается выражение, можно поставить любое вычисление. Оно может быть не только математическим, но и строковым — как конкатенация. Программа все равно останется работоспособной.
+
+\nПрограммы состоят из множества комбинаций выражений. Основываясь на сказанном выше, подумайте, сработает ли такой код:
+
+\nwho = 'dragon's ' + 'mother'
+\nprint(who)
+\nТакой код выведет на экран строку dragon's mother. Если хотите проверить самостоятельно, запустите код на repl.it и поэкспериментируйте.
+
+        \nС помощью переменных можно записывать еще более сложные вычисления. Вернемся к нашей валютной программе. Запишем стоимость доллара в рублях, как отдельную переменную. Вычислим цену 50 евро в долларах, умножив их на 1.25. Допустим, что 1 доллар — 60 рублей:
+
+        \nrubles_per_dollar = 60
+        \ndollars_count = 50 * 1.25  # 62.5
+        \nrubles_count = dollars_count * rubles_per_dollar  # 3750.0
+
+        \nprint(rubles_count)
+        \nТеперь добавим к выводу текст с помощью конкатенации:
+
+        \nrubles_per_dollar = 60
+        \ndollars_count = 50 * 1.25  # 62.5
+        \nrubles_count = dollars_count * rubles_per_dollar  # 3750.0
+
+        \n# Функция str() превращает число в строку.
+        \n# О таких превращениях будет отдельный урок.
+        \nprint('The price is ' + str(rubles_count) + ' rubles')
+        \n# => The price is 3750.0 rubles
+        \nЛюбая переменная может быть частью любого выражения. В момент вычисления вместо имени переменной подставляется ее значение.
+
+        \nИнтерпретатор вычисляет значение dollars_count до того, как эта переменная начнет использоваться в других выражениях. Когда подходит момент использования переменной, Python уже знает значение, потому что вычислил его.
+
+        \nС помощью переменных можно проводить сложные вычисления, а также делать подробный вывод с получившимся значением. Но еще можно получать новые выражения посредством склеивания двух и более значений переменных. За это отвечает конкатенация.
+
+        \nПеременные и конкатенация
+        \nПопробуем использовать переменные с конкатенацией, при этом синтаксически ничего не поменяется. Мы умеем конкатенировать две строки:
+
+        \nwhat = 'Kings' + 'road'
+        \nprint(what)  # => Kingsroad
+        \nЗначит, мы сумеем склеить строку и одну переменную, в которой записана строка:
+
+        \nfirst = 'Kings'
+        \nwhat = first + 'road'
+
+        \nprint(what)  # => Kingsroad
+        \nА еще можно конкатенировать две переменные, в которых записаны строки:
+
+        \nfirst = 'Kings'
+        \nlast = 'road'
+
+        \nwhat = first + last
+        \nprint(what)  # => Kingsroad
+        \nПеременные — важный инструмент в программировании. Они упрощают сложные вычисления и таким образом облегчают разработку. Но чтобы успешно работать с переменными, надо не только правильно использовать их, но и правильно называть. Об этом поговорим уже в следующем уроке.
+
+        \nИменования
+
+        \nМы уже умеем работать с переменными в Python. Но недостаточно знать, как ими пользоваться. Еще важно правильно обозначать переменные, чтобы они считывались верно.
+
+        \nПредставьте, что мы задали следующую программу:
+
+        \nx = 'Father!'
+        \nprint(x)
+        \nС подобной программой мы уже работали, но сейчас в ней изменилось имя переменной на x.
+
+        \nКомпьютеру без разницы, как мы именуем ту или иную переменную. Названия важны только людям. Обычно программисты гораздо чаще читают чужой код, чем пишут свой. Чтобы коллеги смогли с легкостью прочитать и проанализировать ваш код, нужно понятно называть переменные.
+
+        \nВажно придумать понятное название, которое отражает смысл переменной. При этом важно давать такие имена, которые будут понимать без контекста, без изучения окружающего кода.
+
+        \nСуществует общепринятое правило: не используйте транслит для имен — только английский язык. Если вы испытываете сложности с английским, то пользуйтесь переводчиком. Со временем, копаясь в чужом коде, вы научитесь правильно именовать переменные.
+
+        \nСреди разработчиков есть шутка: «Названия переменных — это одна из самых сложных вещей в программировании». Придумывать названия и правда сложно. Например, сложно назвать переменную, в которой хранится количество неоплаченных заказов от клиентов с задолженностью в предыдущем квартале.
+
+        \nЧтобы проверить себя, попробуйте сделать такое задание:
+
+        \nПридумайте название для переменной, в которой будет храниться «количество братьев и сестер короля».
+
+        \nЗапишите его в блокноте или отправьте себе на почту. Не указывайте там ничего, кроме названия переменной. А через несколько уроков мы вернемся к этой теме.
+
+        \nТеперь разберем, как придумывать простые и понятные имена переменных.
+
+        \nИменование переменных
+        \ngreeting — пример простого имени, но не все имена так просты. Часто они включают в себя несколько слов: например, «имя пользователя». В разных языках применяются разные стили кодирования, и имя переменной будет отличаться.
+
+        \nВ именовании переменных можно выделить три основных подхода, которые иногда комбинируют друг с другом. Все эти подходы проявляют себя, когда имя переменной состоит из нескольких слов:
+
+        \nkebab-case — составные части переменной разделяются дефисом (my-super-var)
+        \nsnake_case — для разделения используется подчеркивание (my_super_var)
+        \nCamelCase — каждое слово в переменной пишется с заглавной буквы (MySuperVar)
+        \nПеременные в Python именуются в стиле snake_case: слова записываются строчными буквами и разделяются символом подчеркивания _. Чтобы разобраться подробнее, можете изучить раздел «Как называть переменные» в стандарте PEP8.
+
+        \nДалее посмотрим пример плохих практик и разберем, почему их стоит избегать.
+
+        \nМагические числа
+        \nВозьмем пример программы, которая считает курс валют:
+
+        \neuros_count = 1000
+        \ndollars_count = euros_count * 1.25  # 1250.0
+        \nrubles_count = dollars_count * 60   # 75000.0
+
+        \nprint(rubles_count)
+        \nС точки зрения профессиональной разработки, такой код не соответствует «лучшим практикам» — best practices.
+
+        \nВ этом примере сложно понять, что значат числа 60 и 1.25. Представьте, что вам придется разбираться в этом коде через месяц или через год — это будет сложно. Также сложно будет программисту, который не видел код ранее.
+
+        \nВ нашем примере контекст легко восстановить, потому что переменные названы грамотно. Но в реальных проектах код значительно сложнее, поэтому догадаться до смысла чисел зачастую невозможно.
+
+        \nПроблема кроется в «магических числах» — magic numbers. Это числа, происхождение которых невозможно понять с первого взгляда — приходится глубоко вникать в то, что происходит в коде.
+
+        \nЧтобы предотвратить проблему, нужно создавать переменные с правильными именами. Так все встанет на свои места:
+
+        \ndollars_per_euro = 1.25
+        \nrubles_per_dollar = 60
+
+        \neuros_count = 1000
+        \ndollars_count = euros_count * dollars_per_euro     # 1250.0
+        \nrubles_count = dollars_count * rubles_per_dollar  # 75000.0
+
+        \nprint(rubles_count)
+        \nВ этой программе:
+
+        \nИспользуется именование snake_case
+        \nДве новые переменные отделяются от последующих вычислений пустой строчкой. Эти переменные имеют смысл и без вычислений, поэтому такое отделение уместно, потому что повышает читаемость
+        \nПолучился хорошо именованный и структурированный код, но он длиннее прошлой версии. Так часто бывает — это нормально, ведь код должен быть читабельным
+        \nМагические числа и непонятные именования переменных не ломают код, но делают его менее читабельным.
+
+        \nНужно понимать, что компьютер в любом случае выполнит заданное вычисление. Однако другой программист будет читать код и ничего не поймет — это усложнит работу. Правильное именование переменных — половина успеха анализа кода.
+
+        \nВы уже знаете, как перенести строку или «слепить» несколько строк, чтобы получить новое выражение. Но в программировании есть альтернативы этих операций. Они повышают читаемость кода и делают его проще в поддержке.
+
+        \nИнтерполяция
+        \nБазовый способ соединения строк — конкатенация. С помощью конкатенации строки «суммируются» друг с другом, как в примере ниже:
+
+        \nfirst_name = 'Joffrey'
+        \ngreeting = 'Hello'
+
+        \nprint(greeting + ', ' + first_name + '!')
+        \n# => Hello, Joffrey!
+        \nКонкатенация работает просто, но выглядит не всегда наглядно. Из-за кавычек сложно разглядеть то, каким будет конечный результат. И чем сложнее устроена строка, тем запутаннее она начнет выглядеть. У конкатенации есть альтернатива — интерполяция. Вот как это выглядит:
+
+        \nfirst_name = 'Joffrey'
+        \ngreeting = 'Hello'
+
+        \nprint(f'{greeting}, {first_name}!')
+        \n# => Hello, Joffrey!
+        \nБуква f указывает на то, что мы создаем f-строку — шаблон, в который с помощью фигурных скобок подставляются значения переменных. На выходе получается обычная строка.
+
+        \nРассмотрим такой пример:
+
+        \nschool = 'Hexlet'
+
+        \nwhat_is_it = f'{school} - online courses'
+        \nprint(what_is_it)  # => Hexlet - online courses
+        \nПочти во всех языках для объединения строк интерполяция предпочтительнее конкатенации. Строка при этом получается склеенная, и внутри нее хорошо просматриваются пробелы и другие символы.
+
+        \nИнтерполяция помогает сделать код более понятным для разработчиков. Но это не единственная полезная альтернатива, о которой мы хотели рассказать. Далее разберемся, как объявлять многострочную строку и не использовать \n.
+
+        \nMulti-line строки
+        \nПредставьте, что нам нужно определить строку, которая состоит из нескольких строчек — то есть внутри есть переводы строки \n. Например, она будет выглядеть так:
+
+        \ntext = 'Пример текста,\nсостоящего из\nнескольких строк'
+        \nНа печати строка примет совсем другой вид:
+
+        \nПример текста,
+        \nсостоящего из
+        \nнескольких строк
+        \nДля таких ситуаций в Python есть еще один способ создания строк, который называется multi-line строки. Чтобы описать такую «многострочную строку», нужно заключить ее в тройные кавычки — ''' или '''. Внутри multi-line строки можно переносить текст и не использовать перевод строки \n:
+
+        \ntext = '''Пример текста,
+        \nсостоящего из
+        \nнескольких строк
+        \n'''
+        \nПример текста,
+        \nсостоящего из
+        \nнескольких строк
+
+        \nОбратите внимание, что в конце текста есть пустая строка. Она появилась в тексте потому, что мы поставили закрывающие кавычки ''' на новой строке. Если не переносить закрывающие кавычки на новую строку, то пустая строка в тексте не появится:
+
+        \ntext = '''Пример текста,
+        \nсостоящего из
+        \nнескольких строк'''
+        \nПример текста,
+        \nсостоящего из
+        \nнескольких строк
+        \nИз-за тройных кавычек multi-line строки позволяют не экранировать кавычки внутри строки:
+
+        \nЗдесь не нужно экранировать 'одинарные' и 'двойные' кавычки
+        \nЕще multi-line строки могут становиться f-строками для интерполяции:
+
+        \na = 'A'
+        \nb = 'B'
+
+        \n# Слева добавился f
+        \ntext = f'''{a} и {b}
+        \nсидели на трубе
+        \n'''
+        \nА и B
+        \nсидели на трубе
+
+        \nДля компьютера не важно, какие способы соединения и переноса строк вы будете использовать. Он все равно произведет вычисления и выдаст нужный результат. Интерполяция и multi-line строки используются для удобства разработчиков, чтобы им было проще читать код." />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:fontFamily="@font/montserrat_black_italic"
+        android:text="Домашние задание "
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:fontFamily="@font/montserrat_extrabold"
+        android:gravity="center"
+        android:text="Подумайте что выведет такой код \nwho = 'dragon's ' + ' ' + 'mother'\nprint(who)'"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/cislotniy"
+            android:textColorHighlight="@color/cislotniy"
+            android:textColorHint="@color/cislotniy"
+            android:textColorLink="@color/cislotniy"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/green_circle" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/white_circle" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="30dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/red_circle" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginBottom="430dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lesson_four_preview" />
+
+    <ImageButton
+        android:id="@+id/im_btn4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="450dp"
+        android:background="#00FFFFFF"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_play"
+        tools:ignore="SpeakableTextPresentCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>

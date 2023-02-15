@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lesson_5Activity">
+
+    <Button
+        android:id="@+id/btn_13"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="560dp"
+        android:backgroundTint="@color/cislotniy"
+        android:fontFamily="@font/montserrat_black"
+        android:onClick="onClick"
+        android:text="Отправить"
+        android:textColor="@color/grey"
+        app:cornerRadius="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_black"
+            android:text="Приветствую вас на пятом уроке курса по изучению языка программирования Python.
+
+\nВ этом уроке мы пройдём с вами:
+
+\n1.Извлечение символов из строки
+\n2.Срезы строк
+\n3.Типы данных
+
+\nИзвлечение символов из строки
+
+\nИногда нужно получить один символ из строки. Например, если сайт знает имя и фамилию пользователя, и в какой-то момент требуется вывести эту информацию в формате A. Ivanov. Для этого компьютеру потребуется взять первый символ из имени. В Python есть подходящая операция, которую мы изучим сегодня.
+
+\nИзвлечение элемента по индексу
+\nПредставим, что из имени Alexander нужно вывести на экран только первую букву. Это выглядит так:
+
+\nfirst_name = 'Alexander'
+
+\nprint(first_name[0])  # => A
+\nОперация с квадратными скобками с цифрой извлекает элемент по индексу — позицией символа внутри строки. Индексы начинаются с 0 почти во всех языках программирования. Поэтому, чтобы получить первый символ, нужно указать индекс 0. Индекс последнего элемента равен длине строки минус единица. Обращение к индексу за пределами строки приведет к ошибке:
+
+\n# Длина строки 9, поэтому последний индекс — это 8
+\nfirst_name = 'Alexander'
+
+\nprint(first_name[8])  # => r
+
+\nprint(first_name[9])
+\nIndexError: string index out of range
+\nЧтобы лучше закрепить новые знания, посмотрите на код ниже и подумайте, что он выдаст:
+
+\nmagic = '\nyou'
+\nprint(magic[1])  # => ?
+\nБывают и нестандартные ситуации. Например, нужно вывести элемент из конца, причем из выражения с большим количеством символов. В этом случае можно воспользоваться отрицательным индексом, который облегчит работу программиста.
+
+\nОтрицательные индексы
+\nДопустимо использовать отрицательные индексы. В этом случае идет обращение к символам, начиная с конца строки. -1 — индекс последнего символа, -2 — предпоследнего и так далее. В отличие от прямой индексации, обратный отсчет идет от -1:
+
+\nfirst_name = 'Alexander'
+
+\nprint(first_name[-1])  # => r
+\nИндексом может быть не только конкретное число, но и значение переменной. Посмотрите на пример ниже. Здесь мы записали индекс внутри квадратных скобок не числом, а переменной. Такой код приведет к тому же результату — выводу на экран символа A:
+
+\nfirst_name = 'Alexander'
+\nindex = 0
+
+\nprint(first_name[index])  # => A
+\nЧтобы выводить из выражения лишь некоторые символы, не нужно писать большое количество строк кода — достаточно извлечь элемент с помощью индекса. Также можно пользоваться отрицательным индексом, чтобы легче выводить символы с конца выражения. Далее разберемся, как с помощью этих знаний можно извлекать подстроки из строки.
+
+\nСрезы строк
+
+\nКогда мы работаем со строками в программировании, из них регулярно приходится извлекать некую часть. Например, нам нужно выяснить, присутствует ли меньшая строка внутри большей. В этом уроке мы разберемся, как это сделать.
+
+\nПодстрока и срезы для строк
+\nПодстрока — это некоторая часть строки, которую нужно найти и извлечь.
+
+\nПредставим, что у нас есть дата в таком формате: 12-08-2034. Нам нужно извлечь из нее подстроку, в которую входит только год.
+
+\nЕсли подумать логически, то нужно посчитать индекс символа, с которого начинается год, и затем извлечь четыре символа. Индексы в строке начинаются с нуля, значит, первый символ года доступен по индексу 6, а последний символ — по индексу 9. Проверим:
+
+\nvalue = '12-08-2034'
+
+\nprint(value[6])  # => 2
+\nprint(value[9])  # => 4
+\nЗная эти индексы, мы можем воспользоваться срезами и получить нужную подстроку:
+
+\nvalue = '12-08-2034'
+
+\nyear = value[6:10]
+\nprint(year)  # => 2034
+\nСрезы для строк в Python — это механизм, с помощью которого извлекается подстрока по указанным параметрам. В примере выше мы взяли подстроку с 6 индекса по 10 индекс, не включая, то есть с 6 по 9 включительно. Формула выглядит так:
+
+\nstr[начальный индекс:конечный индекс]
+
+\n# Пара примеров
+\nvalue = '01-12-9873'
+
+\n# Срез строки это всегда строка,
+\n# даже если внутри строки было число.
+\nvalue[1:2]  # '1'
+\nvalue[3:5]  # '12'
+\nСрезы — механизм с большим количеством вариаций. Например, если не указать вторую границу, то извлечение произойдет до конца строки. То же самое с первой границей — началом строки:
+
+\nvalue = 'Hexlet'
+\nvalue[3:]  # 'let'
+\nvalue[:3]  # 'Hex'
+\nМожно указать даже отрицательные индексы. В таком случае отсчет идет с обратной стороны:
+
+\nvalue = 'Hexlet'
+\n# Правая граница отрицательная. Считаем -1 от конца строки
+\nvalue[3:-1]  # 'le'
+\n# Левая граница отрицательная. Считаем -5 от конца строки
+\nvalue[-5:3]  # 'ex'
+\nУ срезов два обязательных параметра, но иногда используется и третий.
+
+\nШаг извлечения
+\nУ срезов есть третий необязательный параметр — шаг извлечения. По умолчанию он равен единице, но мы можем его изменить:
+
+\nvalue = 'Hexlet'
+\nvalue[1:5:2]  # el
+\n# 1:5 это 'exle'
+\n# шаг 2 значит через один, то есть 'e' и 'l'
+\nВсе это можно комбинировать с открытыми границами, то есть без указания начала или конца:
+
+\nvalue = 'Hexlet'
+\nvalue[:5:2]  # 'Hxe'
+\nvalue[1::2]  # 'elt'
+\nШаг может быть отрицательным, в таком случае он берется с конца. Из этого вытекает самый популярный способ использования шага — переворот строки:
+
+\nvalue = 'Hexlet'
+\n# Пропускаем обе границы
+\nvalue[::-1]  # 'telxeH'
+\nЕсли используется отрицательный шаг, и элементы среза извлекаются в обратном порядке — тогда и границы среза тоже нужно указывать в обратном порядке. Первой указывается правая граница среза, второй — левая:
+
+\nvalue = 'Hexlet'
+\n# Символ с индексом 1 не будет включен в подстроку
+\nvalue[4:1:-1]  # 'elx'
+\nСрезы можно указывать не только через числа, но и с использованием переменных:
+
+\nvalue = 'Hexlet'
+\nstart = 1
+\nend = 5
+\nvalue[start:end]  # 'exle'
+\nКак видите, срезы способны на многое. Не переживайте, если прямо сейчас не запомните все эти комбинации — это нормально. Со временем вы научитесь их использовать, не подглядывая в документацию.
+
+\nТипы данных
+
+\nБывают разные способы представлять данные в программах. Есть строки — наборы символов в кавычках вроде 'Hello, World!'. Есть целые числа — например, 7, -198, 0. Это две разные категории информации — два разных типа данных. Операция умножения имеет смысл для категории «целые числа», но не для категории «строки»: нет смысла умножать слово «мама» на слово «блокнот».
+
+        \nТип данных определяет, что можно делать с элементами конкретного множества информации. В этом уроке мы изучим типы данных и узнаем, как работает типизация в Python.
+
+        \nПримитивные типы данных
+        \nЯзык программирования распознает типы данных, поэтому Python не позволит нам умножать строку на строку — нельзя умножать текст на текст. При этом можно умножать целое число на другое целое число. Наличие типов и таких ограничений в языке защищает программы от случайных ошибок.
+
+        \nВ отличие от строк, числа оборачивать в кавычки не нужно. Чтобы напечатать число 5, достаточно написать:
+
+        \nprint(5)  # => 5
+        \nЧисло 5 и строка '5' — совершенно разные вещи, хотя вывод у print() для этих данных идентичный. Целые числа (1, 34, -19 и т.д.) и рациональные числа (1.3, 1.0, -14.324 и т.д.) — это два отдельных типа данных. Такое разделение связано с особенностями устройства компьютеров. Есть и другие типы, с ними мы познакомимся позже.
+
+        \nВот еще один пример, но уже с рациональным числом:
+
+        \nprint(10.234)  # => 10.234
+        \nТипы данных «строка», «целое число» и «рациональное число» — это примитивные типы, то есть они встроены в сам язык Python. В язык встроены также и некоторые составные типы, но пока мы будем работать только с примитивными. Программисты также могут создавать собственные типы данных.
+
+        \nПо-английски строки в программировании называются strings, а строчки текстовых файлов — lines. Например, в коде выше есть строчка (line), но нет никаких строк (string). В русском иногда может быть путаница, поэтому во всех уроках мы будем говорить строка для обозначения типа данных «строка», и строчка для обозначения строчек кода (lines) в файлах.
+
+        \nPython — один из языков, который строго относится к типам данных. Поэтому на любую несовместимость типов он ответит ошибкой. Все дело в сильной типизации.
+
+        \nСильная типизация
+        \nНам известно про два разных типа данных: числа и строки. Например, мы могли складывать числа, потому что операция сложения — это операция для типа «числа». А что, если применить эту операцию не к двум числам, а к числу и строке?
+
+        \nprint(1 + '7')  # TypeError: unsupported operand type(s)...
+        \nPython не разрешит сложить число 1 и строку '7', потому что это значения разных типов. Нужно сначала либо сделать строку числом, либо число строкой. Как это сделать, мы поговорим позже.
+
+        \nТакое педантичное отношение к совместимости типов называется строгой типизацией или сильной типизацией. Python — язык со строгой типизацией.
+
+        \nНе все языки так делают. Например, PHP — это язык со слабой типизацией. Он знает о существовании разных типов, но относится к их использованию не очень строго. PHP пытается преобразовывать информацию, когда это кажется разумным. То же самое относится к JavaScript:
+
+        \n// Как тебе такое, Илон Маск?
+        \n// Число 1 + Строка 7 = Строка 17
+        \n1 + '7'; // '17'
+        \nС одной стороны, автоматическое неявное преобразование типов и правда кажется удобным. Но на практике это свойство языка создает множество ошибок и проблем, которые трудно найти. Код может иногда работать, а иногда не работать — в зависимости от того, «повезло» ли с автоматическим преобразованием. Программист это заметит не сразу и потратит много времени на отладку.
+
+        \nНеизменяемость примитивных типов
+        \nПредставим, что нам нужно изменить символ в строке. Вот, что из этого выйдет:
+
+        \nfirst_name = 'Alexander'
+        \nfirst_name[0] = 'B'
+        \n# Ошибка: TypeError: 'str' object does not support item assignment
+        \nТакое происходит из-за неизменяемости примитивных типов в Python — язык не дает никакой физической возможности поменять строку. Неизменяемость примитивных типов важна по многим причинам. Ключевая причина — производительность.
+
+        \nНо иногда нам нужно изменить строку. Для этого и существуют переменные:
+
+        \nfirst_name = 'Alexander'
+        \nfirst_name = 'Blexander'
+        \nprint(first_name)  # => Blexander
+        \nЕсть большая разница между изменением значения переменной и изменением самого значения. Примитивные типы в Python поменять нельзя, а составные — можно. Также можно без проблем заменить значение переменной.
+
+        \nЯвное преобразование типов
+        \nВ программировании регулярно встречаются задачи, когда один тип данных нужно преобразовать в другой — например, при работе с формами на сайтах. Данные формы всегда приходят в текстовом виде, даже если значение — число. Вот как его можно преобразовать:
+
+        \n# str станет int
+        \nnumber = int('345')
+        \nprint(number)  # => 345
+        \nint() — это функция, в которую передается значение, чтобы его преобразовать. Функция ведет себя подобно арифметическим операциям, но делает особые действия. Вот еще несколько примеров:
+
+        \nvalue = '0'
+        \n# Внутри скобок можно указывать переменную
+        \nconverted_value = int(value)
+        \nprint(converted_value)  # => 0
+
+        \n# Или конкретное значение
+        \nconverted_value2 = int('10')
+        \nprint(converted_value2)  # => 10
+
+        \nconverted_value3 = int(False)
+        \nprint(converted_value3)  # => 0
+
+        \nconverted_value4 = int(True)
+        \nprint(converted_value4)  # => 1
+
+        \n# Если преобразуется число с плавающей точкой
+        \n# то отбрасывается вся дробная часть
+        \nconverted_value5 = int(3.5)
+        \nprint(converted_value5)  # => 3
+        \nТочно так же можно преобразовать данные в строки str() и число с плавающей точкой float():
+
+        \nvalue = str(10)
+        \nprint(value)  # '10'
+
+        \nvalue2 = str(True)
+        \nprint(value2)  # 'True'
+
+        \nvalue3 = float(5)
+        \nprint(value3)  # 5.0
+        \nНекоторые преобразования Python выполняет автоматически. Например, в операциях, где встречается одновременно целое число и число с плавающей точкой. Python автоматически все приводит к float — числу с плавающей точкой:
+
+        \n# Неявно выполняется код float(3) + 1.2
+        \nvalue = 3 + 1.2
+        \nprint(value)  # => 4.2
+        \nЧисла с плавающей точкой
+        \nВ математике существуют разные виды чисел. Например, натуральные — целые числа от одного и больше, или рациональные — числа с точкой, например 0.5. С точки зрения устройства компьютеров, между этими видами чисел — пропасть. Например, нам легко определить, сколько будет 0.2 + 0.1. А теперь посмотрим, что на это скажет Python:
+
+        \n0.2 + 0.1  # 0.30000000000000004
+        \nСложение двух рациональных чисел внезапно привело к неточному вычислению результата. Тот же самый результат выдадут и другие языки программирования. Это объясняется ограничениями вычислительных мощностей. Объем памяти конечен, в отличие от чисел. Бесконечное количество чисел потребовало бы бесконечного количества памяти.
+
+        \nРациональные числа не выстроены в непрерывную цепочку — между 0.1 и 0.2 бесконечное множество чисел. Как тогда хранить рациональные числа? В интернете много статей об организации памяти в таких случаях. Более того, существует стандарт, в котором описано, как это делать правильно. На этот стандарт опирается подавляющее число языков.
+
+        \nРазработчикам важно понимать, что операции с плавающими числами неточны, но эту точность можно регулировать при работе с конкретными задачами.
+
+
+        \nНа этом мой вводный курс в язык программирования Python, спасибо всем кто его смотрел и улучшал свой скилл в IT сфере, скоро будет курс о создании моб. приложений на Python.
+        " />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:fontFamily="@font/montserrat_black_italic"
+        android:text="Домашние задание "
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:fontFamily="@font/montserrat_extrabold"
+        android:gravity="center"
+        android:text="Подумайте что выведет такой код \nmagic =  '\\nyou'\nprint(magic[1])"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/cislotniy"
+            android:textColorHighlight="@color/cislotniy"
+            android:textColorHint="@color/cislotniy"
+            android:textColorLink="@color/cislotniy"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/green_circle" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/white_circle" />
+
+    <ImageView
+        android:id="@+id/imageView16"
+        android:layout_width="30dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/red_circle" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginBottom="430dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lesson_five_preview" />
+
+    <ImageButton
+        android:id="@+id/im_btn5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="450dp"
+        android:background="#00FFFFFF"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_play"
+        tools:ignore="SpeakableTextPresentCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>

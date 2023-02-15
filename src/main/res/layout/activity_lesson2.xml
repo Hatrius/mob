@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lesson_2Activity">
+
+    <Button
+        android:id="@+id/btn_10"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="560dp"
+        android:backgroundTint="@color/cislotniy"
+        android:fontFamily="@font/montserrat_black"
+        android:onClick="onClick"
+        android:text="Отправить"
+        android:textColor="@color/grey"
+        app:cornerRadius="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_black"
+            android:text="Приветствую вас на втором уроке курса по изучению языка программирования Python.
+
+\nВ этом уроке мы пройдём с вами:
+
+\n1.Инструкции
+\n2.Арифметические операции
+\n3.Синтаксис и линтер
+
+\nНу что ж, давайте приступать
+
+\nИнструкции
+
+\nВедь когда мы готовим , то четко следуем рецепту. Иначе еда окажется не такой, как ожидали. Это же правило действует и в программировании.
+
+\nЧтобы увидеть на экране ожидаемый результат, нужно дать компьютеру четкие и пошаговые указания. Это можно сделать с помощью инструкций.
+\nИнструкция — это команда для компьютера, единица выполнения. Код на Python в этом случае — это набор инструкций. Его можно представить в виде пошагового рецепта.
+\nКод на Python запускает интерпретатор — программу, которая выполняет инструкции строго по очереди. Как и шаги в рецепте, наборы инструкций для интерпретатора пишутся по порядку и отделяются друг от друга переходом на следующую строку.
+\nРазработчики должны понимать порядок действий в коде и уметь мысленно разделять программу на независимые части, удобные для анализа.
+\nПосмотрим на пример кода с двумя инструкциями. При его запуске на экран последовательно выводятся два предложения:
+
+\nprint('Mother of Dragons.')
+\nprint('Dracarys!')
+\n# => Mother of Dragons.
+\n# => Dracarys!
+\nВыше мы говорили, что инструкции отделяются друг от друга переходом на новую строку. Но есть и другой способ: их можно разделить точкой с запятой — ;:
+\nprint('Mother of Dragons.'); print('Drakarys!')
+\nТехнической разницы между первым и вторым вариантом нет — интерпретатор поймет инструкции одинаково. Разница только в том, что человеку будет неудобно читать второй вариант.
+
+\nНа базовом уровне компьютеры оперируют только числами. Даже в прикладных программах на высокоуровневых языках внутри много чисел и операций над ними. Но для старта достаточно знать обычную арифметику — с нее и начнем.
+
+\nСчетные палочки
+
+\nНапример, для сложения двух чисел в математике мы пишем: 3 + 4. В программировании — то же самое. Вот программа, которая складывает два числа:
+
+\n3 + 4
+\nАрифметика в программировании практически не отличается от школьной арифметики.
+
+\nСтрочка кода 3 + 4 заставит интерпретатор сложить числа и узнать результат. Эта программа будет работать, но в ней нет смысла. По сути, мы не даем команду интерпретатору, мы просто говорим ему: «смотри, сумма трех и четырех». В реальной работе недостаточно сообщать интерпретатору о математическом выражении.
+
+\nНапример, если создавать интернет-магазин, недостаточно просить интерпретатор посчитать стоимость товаров в корзине. Нужно просить посчитать стоимость И показать цену покупателю.
+
+\nНам нужно попросить интерпретатор сложить 3 + 4 И дать команду сделать что-то с результатом. Например, вывести его на экран:
+
+\n# Сначала вычисляется сумма,
+\n# затем она передается в функцию печати
+\nprint(3 + 4)  # => 7
+\nКроме сложения доступны следующие операции:
+
+\n- — вычитание
+\n* — умножение
+\n** — возведение в степень
+\n/ — деление
+\n// — целочисленное деление
+\n% — остаток от деления
+\nТеперь выведем на экран результат деления, а потом результат возведения в степень:
+
+\nprint(8 / 2)   # => 4.0 (При делении двух чисел получается тип данных float)
+\nprint(3 ** 2)  # => 9
+\nprint(9 % 2)   # => 1
+\nРазберем, как в программировании называются составляющие математических операций.
+
+\nОператоры и операнды
+\nЗнак операции, такой как +, называют оператором. Операторы выполняют операции над определенными значениями, которые называются операндами. Сами операторы — это обычно один или несколько символов. Реже — слово. Подавляющее большинство операторов соответствуют математическим операциям.
+
+\nprint(8 + 2)
+\nВ этом примере + — это оператор, а числа 8 и 2 — это операнды.
+
+\nКогда мы складываем, у нас есть два операнда: один слева, другой справа от знака +. Операции, которые требуют наличия двух операндов, называются бинарными. Если пропустить хотя бы один операнд, например, 3 +, то программа завершится с синтаксической ошибкой.
+
+\nОперации бывают не только бинарными, но и унарными — с одним операндом, и тернарными — с тремя операндами. Причем операторы могут выглядеть одинаково, но обозначать разные операции. Символы + и - используются не только как операторы. Когда речь идет про отрицательные числа, то знак минуса становится частью числа:
+
+\nprint(-3)  # => -3
+\nВыше пример применения унарной операции к числу 3. Оператор минус перед тройкой говорит интерпретатору взять число 3 и найти противоположное, то есть -3. Это может сбить с толку, потому что -3 — это одновременно и число само по себе, и оператор с операндом. Но у языков программирования такая структура.
+
+\nКоммутативная операция
+\n«От перемены мест слагаемых сумма не меняется» — это один из базовых законов арифметики, который также называется коммутативным законом. Бинарная операция считается коммутативной, если вы получаете тот же самый результат, поменяв местами операнды. В этом случае сложение — это коммутативная операция: 3 + 2 = 2 + 3.
+
+\nНо вычитание — это не коммутативная операция: 2 - 3 ≠ 3 - 2. В программировании этот закон работает точно так же, как в арифметике. Более того, большинство операций, с которыми мы сталкиваемся в реальной жизни, не являются коммутативными. Отсюда вывод: всегда обращайте внимание на порядок того, с чем работаете.
+
+\nКомпозиция операций
+\nРассмотрим пример:
+
+\nprint(2 * 4 * 5 * 10)
+\nОперации можно соединять друг с другом и вычислять все более сложные составные выражения. Чтобы представить, как происходят вычисления внутри интерпретатора, разберем пример: 2 * 4 * 5 * 10.
+
+\nСначала вычисляется 2 * 4 и получается выражение 8 * 5 * 10
+\nЗатем 8 * 5. В итоге имеем 40 * 10
+\nВ итоге происходит последнее умножение, и получается результат 400
+\nОперации могут содержать разные операторы, из-за чего появляется вопрос об их приоритете.
+
+\nПриоритет операций
+\nПредставим, что нужно вычислить такое выражение: 2 + 2 * 2. Именно так и запишем:
+
+\nprint(2 + 2 * 2)  # => 6
+\nВ школьной математике есть понятие «приоритет операции». Приоритет определяет, в какой последовательности должны выполняться операции. Умножение и деление имеют больший приоритет, чем сложение и вычитание, а приоритет возведения в степень выше всех остальных арифметических операций. Например: 2 ** 3 * 2 вычислится в 16.
+
+\nНо нередко вычисления должны происходить в порядке, отличном от стандартного приоритета. Тогда приоритет нужно задавать круглыми скобками. Так было и в школе, например: (2 + 2) * 2. Скобки можно ставить вокруг любой операции. Они могут вкладываться друг в друга сколько угодно раз. Вот примеры:
+
+\nprint(3 ** (4 - 2))  # => 9
+\nprint(7 * 3 + (4 / 2) - (8 + (2 - 1)))  # => 14
+\nГлавное при этом соблюдать парность — закрывать скобки в правильном порядке. Это часто становится причиной ошибок не только у новичков, но и у опытных программистов. Для удобства ставьте сразу открывающую и закрывающую скобку, а потом пишите внутреннюю часть. Редактор на нашем сайте (и большинство других редакторов кода) делают это автоматически: вы пишете (, а редактор сразу добавляет ). Это касается и других парных символов, например, кавычек. О них поговорим в будущих уроках.
+
+\nИногда выражение сложно воспринимать визуально. Тогда можно расставить скобки, не повлияв на приоритет:
+
+\n# Было
+\nprint(8 / 2 + 5 - -3 / 2)  # => 10.5
+
+\n# Стало
+\nprint(((8 / 2) + 5) - (-3 / 2))  # => 10.5
+\nВажно запомнить: код пишется для людей. Код будут читать люди, а машины будут только исполнять его. Для машин код — корректный или некорректный. Для них нет «более» понятного или «менее» понятного кода.
+
+
+\nЕсли программа на Python написана синтаксически некорректно, то интерпретатор выводит на экран соответствующее сообщение. Также он указывает на файл и строчку, где произошла ошибка.
+
+\nСинтаксическая ошибка возникает в том случае, когда код записали с нарушением грамматических правил. В естественных языках грамматика важна, но текст с ошибками обычно можно понять и прочитать. В программировании все строго. Мельчайшее нарушение — и программа даже не запустится. Примером может быть забытая ;, неправильно расставленные скобки и другие детали.
+
+\nВот пример кода с синтаксической ошибкой:
+
+\nprint('Hodor)
+\nЕсли запустить код выше, то мы увидим следующее сообщение:
+
+\n$ python index.py
+\nFile 'index.py', line 1
+\nprint('Hodor)
+                            \n^
+\nSyntaxError: EOL while scanning string literal
+\nС одной стороны, ошибки синтаксиса — самые простые, потому что они связаны с грамматическими правилами написания кода, а не со смыслом кода. Их легко исправить: нужно лишь найти нарушение в записи. С другой стороны, интерпретатор не всегда может четко указать на это нарушение. Поэтому бывает, что забытую скобку нужно поставить не туда, куда указывает сообщение об ошибке.
+
+\nОшибки линтера
+\nМы уже научились писать простые программы, и поэтому можно немного поговорить о том, как писать их правильно.
+
+\nКод нужно оформлять определенным образом, чтобы он был понятным и простым в поддержке. Существуют специальные наборы правил, которые описывают различные аспекты написания кода — их называют стандартами кодирования. В Python стандарт один — PEP8. Он отвечает практически на все вопросы о том, как оформлять ту или иную часть кода. Этот документ содержит все правила, которых нужно придерживаться. Новичкам мы советуем завести привычку заглядывать в стандарт PEP8 и писать код по нему.
+
+\nСегодня не нужно помнить все правила из стандарта, потому что существуют специальные программы, которые проверяют код автоматически и сообщают о нарушениях. Такие программы называются линтерами. Они проверяют код на соответствие стандартам. В Python их достаточно много, и наиболее популярный из них — flake8.
+
+\nНа этом наш урок подходит к концу.
+\nВсем до новых встреч" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:fontFamily="@font/montserrat_black_italic"
+        android:text="Домашние задание "
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:fontFamily="@font/montserrat_extrabold"
+        android:gravity="center"
+        android:text="Примените унарную операцию\nк числу 4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/cislotniy"
+            android:textColorHighlight="@color/cislotniy"
+            android:textColorHint="@color/cislotniy"
+            android:textColorLink="@color/cislotniy"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/green_circle" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="30dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/red_circle" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/white_circle" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginBottom="430dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lesson_two_preview" />
+
+    <ImageButton
+        android:id="@+id/im_btn3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="450dp"
+        android:background="#00FFFFFF"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_play"
+        tools:ignore="SpeakableTextPresentCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>

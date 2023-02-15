@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Lesson_3Activity">
+
+    <Button
+        android:id="@+id/btn_11"
+        android:layout_width="250dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="560dp"
+        android:backgroundTint="@color/cislotniy"
+        android:fontFamily="@font/montserrat_black"
+        android:onClick="onClick"
+        android:text="Отправить"
+        android:textColor="@color/grey"
+        app:cornerRadius="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_black"
+            android:text="Приветствую вас на третьем уроке курса по изучению языка программирования Python.
+
+\nВ этом уроке мы пройдём с вами:
+
+\n1.Строки
+\n2.Переменные
+
+
+\nНу что ж, давайте приступать
+
+\nСтроки
+\nВ этом уроке мы разберемся, что такое строка и какую роль в коде играют кавычки. Мы познакомимся со специальными символами и научимся их применять.
+
+\nОпределить строку довольно просто — это некий набор символов. Представим, что у нас есть такие записи:
+
+\n'Hello'
+\n'Goodbye'
+\n'G'
+\n' '
+\n''
+\nКакие из этих вариантов — строки? На самом деле, все пять вариантов подходят:
+
+\nС 'Hello' и 'Goodbye' все очевидно — мы уже работали с подобными конструкциями и называли их строками
+\n'G' и ' ' — тоже строки, просто в них всего по одному символу
+\n'' — это пустая строка, потому в ней ноль символов
+\nКавычки
+\nСтрокой мы считаем все, что находится внутри кавычек: даже если это пробел, один символ или вообще отсутствие символов.
+
+\nВыше мы записывали строки в одинарных кавычках, но это не единственный способ. Можно использовать и двойные:
+
+\nprint('Dracarys!')
+        \nТеперь представьте, что вы хотите напечатать строчку Dragon's mother. Апостроф перед буквой s — это такой же символ, как одинарная кавычка. Попробуем:
+
+        \nprint('Dragon's mother')
+        \n# SyntaxError: invalid syntax
+        \nТакая программа не будет работать. С точки зрения Python строчка началась с одинарной кавычки, а потом закончилась после слова dragon. Дальше были символы s mother без кавычек — значит, это не строка. А потом была одна открывающая строку кавычка, которая так и не закрылась: '). Этот код содержит синтаксическую ошибку — это видно даже по тому, как подсвечен код.
+
+        \nЧтобы избежать этой ошибки, мы используем двойные кавычки. Такой вариант программы сработает верно:
+
+        \nprint('Dragon's mother')
+        \nТеперь интерпретатор знает, что строка началась с двойной кавычки и закончиться должна тоже на двойной кавычке. А одинарная кавычка внутри стала частью строки.
+
+        \nВерно и обратное. Если внутри строки мы хотим использовать двойные кавычки, то саму строку надо делать в одинарных. Причем количество кавычек внутри самой строки неважно.
+
+        \nТеперь представим, что мы хотим создать такую строку:
+
+        \nDragon's mother said 'No'
+        \nВ ней есть и одинарные, и двойные кавычки. Нам нужно каким-то образом указать интерпретатору, что кавычки — это один из символов внутри строки, а не начало или конец строки.
+
+        \nДля этого используют символ экранирования: \ — обратный слэш. Если мы поставим \ перед кавычкой (одинарной или двойной), то интерпретатор распознает кавычку как обычный символ внутри строки, а не начало или конец строки:
+
+        \n# Экранируем кавычки вокруг No, чтобы интерпретатор
+        \n# распознал их как часть строки
+        \nprint('Dragon's mother said \'No\'')
+        \n# => Dragon's mother said 'No'
+        \nОбратите внимание, что в примере выше нам не пришлось экранировать одинарную кавычку (апостроф 's), потому что сама строка создана с двойными кавычками. Если бы строка создавалась с одинарными кавычками, то символ экранирования нужен был бы перед апострофом, но не перед двойными кавычками.
+
+        \nЕсли нужно вывести сам обратный слеш, то работает такое же правило. Как и любой другой специальный символ, его надо экранировать:
+
+        \nprint('\\')
+        \n# => \
+        \nЭкранированные последовательности
+        \nМы хотим показать вот такой диалог:
+
+        \n- Are you hungry?
+        \n- Aaaarrrgh!
+        \nПопробуем вывести на экран строку с таким текстом:
+
+        \nprint('- Are you hungry?- Aaaarrrgh!')
+        \n# => - Are you hungry?- Aaaarrrgh!
+        \nКак видите, результат получился не такой, как мы хотели. Строки расположились друг за другом, а не одна ниже другой. Нам нужно как-то сказать интерпретатору «нажать на Enter» — сделать перевод строки после вопросительного знака. Это можно сделать с помощью символа \n:
+
+        \nprint('- Are you hungry?\n- Aaaarrrgh!')
+        \n# => - Are you hungry?
+        \n# => - Aaaarrrgh!
+        \n\n — это пример экранированной последовательности (escape sequence). Такие последовательности еще называют управляющими конструкциями. Их нельзя увидеть в том же виде, в котором их набрали.
+
+        \nНабирая текст в Word, вы нажимаете на Enter в конце строчки. Редактор при этом ставит в конец строчки специальный невидимый символ, который называется LINE FEED (LF, перевод строчки). В некоторых редакторах можно даже включить отображение невидимых символов. Тогда текст будет выглядеть примерно так:
+
+        \n- Привет!¶
+        \n- О, привет!¶
+        \n- Как дела?
+        \nУстройство, которое выводит соответствующий текст, учитывает этот символ. Например, принтер при встрече с LF протаскивает бумагу вверх на одну строку, а текстовый редактор переносит весь последующий текст ниже, также на одну строку.
+
+        \nСуществует несколько десятков таких невидимых символов, но в программировании часто встречаются всего несколько. Кроме перевода строки, к таким символам относятся:
+
+        \nтабуляция \t — разрыв, который получается при нажатии на кнопку Tab
+        \nвозврат каретки \r — работает только в Windows
+        \nРаспознать такую управляющую конструкцию в тексте можно по символу \. Программисты часто используют перевод строки \n, чтобы правильно форматировать текст. Например, напишем такой код:
+
+        \nprint('Gregor Clegane\nDunsen\nPolliver\nChiswyck')
+        \nТогда на экран выведется:
+
+        \nGregor Clegane
+        \nDunsen
+        \nPolliver
+        \nChiswyck
+        \nКогда работаете с символом перевода, учитывайте следующие моменты:
+
+        \nНе важно, что стоит перед или после \n: символ или пустая строка. Перевод обнаружится и выполнится в любом случае
+
+        \nСтрока может содержать только \n:
+
+        \nprint('Gregor Clegane') # Строка с текстом
+        \nprint('\n') # Строка с невидимыми символами перевода строки
+        \nprint('Dunsen') # Строка с текстом
+        \nПрограмма выведет на экран:
+
+        \nGregor Clegane
+
+        \nDunsen
+        \nВ коде последовательность \n выглядит как два символа, но с точки зрения интерпретатора — это один специальный символ
+
+        \nЕсли нужно вывести \n как текст (два отдельных печатных символа), то можно воспользоваться экранированием — добавить еще один \ в начале. Последовательность \\n отобразится как символы \ и n, которые идут друг за другом:
+
+        \nprint('Joffrey loves using \\n')
+        \n# => Joffrey loves using \n
+        \nВ Windows для перевода строк по умолчанию используется \r\n. Такая комбинация хорошо работает только в Windows, но создает проблемы при переносе в другие системы. Например, когда в команде разработчиков есть пользователи Linux.
+
+        \nДело в том, что последовательность \r\n имеет разную трактовку в зависимости от выбранной кодировки, о чем мы поговорим позже. По этой причине в среде разработчиков принято всегда использовать \n без \r.
+
+        \nВ таком случае перевод строки всегда трактуется одинаково и отлично работает в любой системе. Не забудьте настроить ваш редактор на использование \n.
+
+        \nКонкатенация
+        \nВ веб-разработке программы постоянно оперируют строками. Все, что мы видим на сайтах, так или иначе представлено в виде текста. Этот текст чаще всего динамический — то есть он получается из разных частей, которые соединяются вместе.
+
+        \nЧтобы соединить строки, нужно выполнить конкатенацию:
+
+        \n# Оператор такой же, как и при сложении чисел,
+        \n# но здесь он имеет другой смысл (семантику)
+        \nprint('Dragon' + 'stone')  # => Dragonstone
+        \nСклеивание строк всегда происходит в том же порядке, в котором записаны операнды. Левый операнд становится левой частью строки, а правый — правой. Вот еще несколько примеров:
+
+        \nprint('Kings' + 'wood')      # => Kingswood
+        \nprint('Kings' + 'road')      # => Kingsroad
+        \nprint('King's' + 'Landing')  # => King'sLanding
+        \nКак видите, строки можно склеивать, даже если их записали с разными кавычками.
+
+        \nПробел — такой же символ, как и другие, поэтому сколько пробелов поставите в строке, столько и получится в итоговой строке:
+
+        \n# Ставим пробел в левой части
+        \nprint('King's ' + 'Landing')  # => King's Landing
+
+        \n# Ставим пробел в правой части
+        \nprint('King's' + ' Landing')  # => King's Landing
+
+        \nПеременные
+
+        \nВ этом уроке разберемся, как работать с переменными в Python, какие ошибки часто допускают неопытные разработчики и как их исправлять.
+
+        \nКак создать переменную
+        \nПредставьте, что нам нужно напечатать на экран фразу Father! два раза. Эту задачу можно решить так:
+
+        \nprint('Father!')
+        \nprint('Father!')
+        \nВ простейшем случае так и стоит поступить. Но если фраза Father! будет использоваться чаще двух раз, да еще и в разных частях программы, то придется ее везде повторять — это неудобно. Проблемы с таким подходом начнутся, когда понадобится изменить фразу, а такое происходит довольно часто. Нам придется найти все места с этой фразой и выполнить необходимую замену.
+
+        \nА можно поступить по-другому. Чтобы не копировать выражение, достаточно создать с ним переменную:
+
+        \n# greeting - переводится как приветствие
+        \ngreeting = 'Father!'
+        \nprint(greeting)
+        \nprint(greeting)
+        \n# => Father!
+        \n# => Father!
+        \nОпределение переменной
+
+        \nВ строчке greeting = 'Father!' мы берем переменную с именем greeting и присваиваем ей значение 'Father!'. Переменная указывает на данные, которые в нее записали. Благодаря этому, данные можно использовать многократно и не дублировать их постоянно.
+
+        \nКогда переменная создана, можно ее использовать. Она подставляется в те места, где раньше стояла наша фраза. Когда код выполняется, интерпретатор доходит до строчки print(greeting) и подставляет содержимое переменной, а затем выполняет код.
+
+        \nДля имени переменной используется любой набор допустимых символов, к которым относятся буквы английского алфавита, цифры и знак _. При этом цифру нельзя ставить в начале. Имена переменных регистрозависимы, то есть имя hello и имя HELLO — это два разных имени для двух разных переменных. Регистр в Python имеет важное значение, никогда не забывайте про него.
+
+        \nКоличество создаваемых переменных неограниченно. Большие программы содержат десятки и сотни тысяч имен переменных. Вот как выглядят две переменные внутри одной программы:
+
+        \ngreeting1 = 'Father!'
+        \nprint(greeting1)
+        \nprint(greeting1)
+
+        \ngreeting2 = 'Mother!'
+        \nprint(greeting2)
+        \nprint(greeting2)
+        \nЧтобы программу было удобно читать, среди программистов принято создавать переменные как можно ближе к тому месту, где они используются. Теперь нужно разобраться, как их изменять.
+
+        \nКак изменить переменную
+        \nСамо слово «переменная» подсказывает, что ее можно менять. И действительно, со временем внутри программы значения переменных могут изменяться.
+
+        \nНапример:
+
+        \n# greeting - переводится как приветствие
+        \ngreeting = 'Father!'
+        \nprint(greeting)  # => Father!
+
+        \ngreeting = 'Mother!'
+        \nprint(greeting)  # => Mother!
+        \nИмя осталось тем же, но внутри появились другие данные. Отметим, что переменные в Python не требуют специального объявления. Вместо этого переменная объявляется, когда ее впервые используют в программе.
+
+        \nПеременные — мощная и в то же время рисковая вещь. Нельзя сразу с уверенностью сказать, что внутри нее записано — сначала надо проанализировать код, который находится перед переменной. Именно этим занимаются разработчики во время отладки, когда пытаются разобраться, почему программа работает не так, как задумано.
+
+        \nКакие ошибки часто допускают с переменными
+        \nПорядок инструкций в коде с переменными имеет огромное значение. Поэтому переменную нужно определить до первого использования. Ниже пример ошибки, которую часто допускают новички:
+
+        \nprint(greeting)
+        \ngreeting = 'Father!'
+        \nЗапуск программы выше завершается с ошибкой NameError: name 'greeting' is not defined — это ошибка обращения. Это значит, что в коде используется имя (идентификатор), которое пока не определено. Это говорится в самом тексте ошибки: 'greeting' is not defined. Кроме неправильного порядка действий, в Python встречаются банальные опечатки в имени переменной. Это происходит и когда переменная используется, и когда ее объявляют.
+
+        \nКоличество подобных ошибок можно уменьшить, если использовать правильно настроенный редактор. Он предупреждает о возможных проблемах и подсвечивает переменные, которые используются без объявления.
+
+        \nС переменными мы разобрались. Можно переходить к данным, которые никогда не меняются.
+
+        \nКак работают константы
+        \nНекоторые данные никогда не меняются — например, математические постоянные. Возьмем для примера число π. Оно всегда равно 3.14 и не может измениться. Чтобы обратиться к подобным данным, в Python используют константы:
+
+        \nPI = 3.14
+        \nprint(PI)  # => 3.14
+        \nКонстанта создается так же, как переменная. Разница только в том, что константы принято именовать заглавными буквами и с _ в качестве разделителя между словами. Константа, как и переменная, может использоваться в любом выражении.
+        " />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:fontFamily="@font/montserrat_black_italic"
+        android:text="Домашние задание "
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:fontFamily="@font/montserrat_extrabold"
+        android:gravity="center"
+        android:text="Выполните конкатенацию чтобы\nполучить строку 'Dragonstone'"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <EditText
+            android:id="@+id/editTextTextMultiLine2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/cislotniy"
+            android:textColorHighlight="@color/cislotniy"
+            android:textColorHint="@color/cislotniy"
+            android:textColorLink="@color/cislotniy"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/green_circle" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/white_circle" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="30dp"
+        android:layout_height="101dp"
+        android:layout_marginTop="565dp"
+        android:layout_marginEnd="260dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/red_circle" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginBottom="430dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lesson_three_preview" />
+
+    <ImageButton
+        android:id="@+id/im_btn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="450dp"
+        android:background="#00FFFFFF"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="onClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_media_play"
+        tools:ignore="SpeakableTextPresentCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>
